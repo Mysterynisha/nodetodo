@@ -13,7 +13,7 @@ const App = () => {
     useEffect(()=>{
       async function getitem()
       {
-        let response=await axios.get("http://localhost:7000/api/todo")
+        let response=await axios.get("/api/todo")
         console.log(response.data);
         setdata([...response.data])
         setitem(false)
@@ -29,7 +29,7 @@ const App = () => {
       "iscompleted":true
     }
     console.log(obj);
-     let response=await axios.post("http://localhost:7000/api/todo",obj)
+     let response=await axios.post("/api/todo",obj)
     console.log(response.data);
      setitem("");
      Item.current.value=""
@@ -38,7 +38,7 @@ const App = () => {
   async function deletehandle(id)
   {
     setitem(false)
-    let response=axios.delete(`http://localhost:7000/api/todo/${id}`)
+    let response=axios.delete(`/api/todo/${id}`)
     console.log(response);
     console.log(id);
     
@@ -54,7 +54,7 @@ const App = () => {
         const obj={
           item:inputdata
         }
-        let response=axios.put(`http://localhost:7000/api/todo/${id}`,obj)
+        let response=axios.put(`/api/todo/${id}`,obj)
         console.log(response);
         console.log(obj,id);
         setitem(true)
